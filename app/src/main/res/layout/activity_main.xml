@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="wifi"
+                  type="com.example.y_t.datameasurer.manager.WIFIUtil"/>
+    </data>
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary">
+        <GridLayout android:id="@+id/rootlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:rowCount="5"
+                    android:orientation="vertical">
+            <include android:id="@+id/wifi_list_title"
+                     android:layout_width="match_parent"
+                     android:layout_height="12pt"
+                     android:layout_row="0"
+                     layout="@layout/wifi_item"/>
+            <com.example.y_t.datameasurer.Controls.ListViewerX android:id="@+id/reslist"
+                                                               android:layout_row="1"
+                                                               android:layout_height="0pt"
+                                                               android:layout_rowWeight="12"
+                                                               android:layout_columnWeight="1"
+                                                               android:layout_gravity="fill"
+                                                               android:background="@color/colorListBG"
+                                                               android:scrollbars="vertical"
+                                                               android:scrollbarThumbVertical="@color/colorAccent_T0"
+                                                               android:scrollbarTrackVertical="@color/colorTransparent"
+                                                               android:scrollbarSize="@dimen/wifilistscrollbar"
+                                                               android:divider="@null"/>
+            <LinearLayout android:layout_height="12pt"
+                          android:layout_row="2"
+                          android:layout_gravity="fill"
+                          android:background="@color/colorMainTheme"
+                          android:orientation="horizontal">
+                <TextView style="@style/MainActWifiInfo_title"
+                          android:text="@string/WIFI_NUM"/>
+                <TextView android:text="@{wifi.NUM}"
+                          android:textAlignment="viewStart"
+                          android:layout_width="12pt"
+                          style="@style/MainActWifiInfo_title"/>
+                <TextView style="@style/MainActWifiInfo_title"
+                          android:layout_width="36pt"
+                          android:text="@string/WIFI_NOW"/>
+                <TextView android:text="@{wifi.NOW}"
+                          android:layout_width="match_parent"
+                          android:textAlignment="viewStart"
+                          style="@style/MainActWifiInfo_title"/>
+            </LinearLayout>
+            <android.support.constraint.ConstraintLayout android:layout_height="0pt"
+                                                         android:layout_row="3"
+                                                         android:layout_rowWeight="4"
+                                                         android:background="@color/colorListBG"
+                                                         android:layout_gravity="fill"
+                                                         android:orientation="horizontal">
+                <TextView android:id="@+id/MSG_Detail"
+                          android:text="@{wifi.NOWInfo}"
+                          android:layout_width="0pt"
+                          android:layout_height="match_parent"
+                          app:layout_constraintHorizontal_weight="3"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintRight_toLeftOf="@+id/MSG_Res"
+                          android:singleLine="false"
+                          android:typeface="monospace"
+                          style="@style/MainActWifiInfo_title"/>
+                <TextView android:id="@+id/MSG_Res"
+                          android:text="@{wifi.Status}"
+                          android:layout_width="0pt"
+                          android:layout_height="match_parent"
+                          app:layout_constraintHorizontal_weight="1"
+                          app:layout_constraintLeft_toRightOf="@+id/MSG_Detail"
+                          app:layout_constraintRight_toRightOf="parent"
+                          android:gravity="center"
+                          android:textAlignment="center"
+                          android:singleLine="false"
+                          android:typeface="monospace"
+                          android:background="@drawable/part_edittext_bg"
+                          style="@style/MainActWifiInfo_title"/>
+            </android.support.constraint.ConstraintLayout>
+            <android.support.constraint.ConstraintLayout android:layout_height="0pt"
+                                                         android:layout_row="4"
+                                                         android:layout_rowWeight="10"
+                                                         android:layout_gravity="fill"
+                                                         android:focusable="true"
+                                                         android:focusableInTouchMode="true">
+                <!-- region IP & Port -->
+                <TextView android:id="@+id/Input_IP_label"
+                          android:text="@string/TCP_IP"
+                          app:layout_constraintHorizontal_weight="2"
+                          app:layout_constraintVertical_weight="1"
+                          app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintBottom_toTopOf="@id/Input_Layer_label"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintRight_toLeftOf="@id/Input_IP"
+                          style="@style/MainActEditTextLabel"/>
+                <EditText android:id="@+id/Input_IP"
+                          android:text="@={wifi.IP}"
+                          android:inputType="number"
+                          android:digits="@string/FORMAT_IP"
+                          app:layout_constraintHorizontal_weight="7"
+                          app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_IP_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_IP_label"
+                          app:layout_constraintRight_toLeftOf="@id/Input_Port_label"
+                          style="@style/MainActEditText"/>
+                <TextView android:id="@+id/Input_Port_label"
+                          android:text="@string/TCP_Port"
+                          app:layout_constraintHorizontal_weight="1"
+                          app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_IP_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_IP"
+                          app:layout_constraintRight_toLeftOf="@id/Input_Port"
+                          style="@style/MainActEditTextLabel"/>
+                <EditText android:id="@+id/Input_Port"
+                          android:text="@={wifi.PORT}"
+                          android:inputType="number"
+                          app:layout_constraintHorizontal_weight="2"
+                          app:layout_constraintTop_toTopOf="parent"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_IP_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_Port_label"
+                          app:layout_constraintRight_toRightOf="parent"
+                          style="@style/MainActEditText"/>
+                <!-- endregion -->
+
+                <!-- Laye -->
+                <TextView android:id="@+id/Input_Layer_label"
+                          android:text="@string/PKG_LAYER"
+                          app:layout_constraintHorizontal_weight="2"
+                          app:layout_constraintVertical_weight="1"
+                          app:layout_constraintTop_toBottomOf="@id/Input_IP_label"
+                          app:layout_constraintBottom_toTopOf="@id/Input_SubID_label"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintRight_toLeftOf="@id/Input_Layer"
+                          style="@style/MainActEditTextLabel"/>
+                <EditText android:id="@+id/Input_Layer"
+                          android:text="@={wifi.Layer}"
+                          android:inputType="number"
+                          app:layout_constraintHorizontal_weight="8"
+                          app:layout_constraintTop_toBottomOf="@id/Input_IP_label"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_Layer_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_Layer_label"
+                          app:layout_constraintRight_toLeftOf="@id/Input_Layer_Btn_Add"
+                          style="@style/MainActEditText"/>
+                <Button android:id="@+id/Input_Layer_Btn_Add"
+                        app:layout_constraintHorizontal_weight="2"
+                        app:layout_constraintTop_toBottomOf="@id/Input_IP_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_Layer_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_Layer"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="@string/BTN_ADD"
+                        android:onClick="@{()->wifi.ADD(@id/Input_Layer,2)}"
+                        style="@style/MainActToggleButton"/>
+
+                <!-- SubID -->
+                <TextView android:id="@+id/Input_SubID_label"
+                          android:text="@string/PKG_SUBID"
+                          app:layout_constraintHorizontal_weight="2"
+                          app:layout_constraintVertical_weight="1"
+                          app:layout_constraintTop_toBottomOf="@id/Input_Layer_label"
+                          app:layout_constraintBottom_toTopOf="@id/Input_Direction_label"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintRight_toLeftOf="@id/Input_SubID"
+                          style="@style/MainActEditTextLabel"/>
+                <EditText android:id="@+id/Input_SubID"
+                          android:text="@={wifi.SubID}"
+                          android:inputType="number"
+                          app:layout_constraintHorizontal_weight="8"
+                          app:layout_constraintTop_toBottomOf="@id/Input_Layer_label"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_SubID_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_SubID_label"
+                          app:layout_constraintRight_toLeftOf="@id/Input_SubID_Btn_Add"
+                          style="@style/MainActEditText"/>
+                <Button android:id="@+id/Input_SubID_Btn_Add"
+                        app:layout_constraintHorizontal_weight="2"
+                        app:layout_constraintTop_toBottomOf="@id/Input_Layer_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_SubID_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_SubID"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="@string/BTN_ADD"
+                        android:onClick="@{()->wifi.ADD(@id/Input_SubID,1)}"
+                        style="@style/MainActToggleButton"/>
+
+                <!-- DIRECTION -->
+                <TextView android:id="@+id/Input_Direction_label"
+                          android:text="@string/PKG_DIRECTION"
+                          app:layout_constraintHorizontal_weight="2"
+                          app:layout_constraintVertical_weight="1"
+                          app:layout_constraintTop_toBottomOf="@id/Input_SubID_label"
+                          app:layout_constraintBottom_toTopOf="@id/Input_ID_label"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintRight_toLeftOf="@id/Input_Direction"
+                          style="@style/MainActEditTextLabel"/>
+                <EditText android:id="@+id/Input_Direction"
+                          android:text="@={wifi.Direction}"
+                          android:inputType="number"
+                          app:layout_constraintHorizontal_weight="8"
+                          app:layout_constraintTop_toBottomOf="@id/Input_SubID_label"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_Direction_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_Direction_label"
+                          app:layout_constraintRight_toLeftOf="@id/Input_Direction_Btn_Add"
+                          style="@style/MainActEditText"/>
+                <Button android:id="@+id/Input_Direction_Btn_Add"
+                        app:layout_constraintHorizontal_weight="2"
+                        app:layout_constraintTop_toBottomOf="@id/Input_SubID_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_Direction_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_Direction"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="@string/BTN_ADD"
+                        android:onClick="@{()->wifi.ADD(@id/Input_Direction,3)}"
+                        style="@style/MainActToggleButton"/>
+
+                <!-- ID -->
+                <TextView android:id="@+id/Input_ID_label"
+                          android:text="@string/PKG_ID"
+                          app:layout_constraintHorizontal_weight="2"
+                          app:layout_constraintVertical_weight="1"
+                          app:layout_constraintTop_toBottomOf="@id/Input_Direction_label"
+                          app:layout_constraintBottom_toTopOf="@id/Start"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintRight_toLeftOf="@id/Input_ID"
+                          style="@style/MainActEditTextLabel"/>
+                <EditText android:id="@+id/Input_ID"
+                          android:text="@={wifi.ID}"
+                          android:inputType="number"
+                          app:layout_constraintHorizontal_weight="3"
+                          app:layout_constraintTop_toTopOf="@id/Input_ID_label"
+                          app:layout_constraintBottom_toBottomOf="@id/Input_ID_label"
+                          app:layout_constraintLeft_toRightOf="@id/Input_ID_label"
+                          app:layout_constraintRight_toLeftOf="@id/Input_ID_Btn_Add"
+                          style="@style/MainActEditText"/>
+                <Button android:id="@+id/Input_ID_Btn_Add"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintTop_toTopOf="@id/Input_ID_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_ID_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_ID"
+                        app:layout_constraintRight_toLeftOf="@id/Input_ID_Btn_Sub"
+                        android:text="@string/BTN_ADD"
+                        android:onClick="@{()->wifi.ADD(@id/Input_ID,120)}"
+                        style="@style/MainActToggleButton"/>
+                <Button android:id="@+id/Input_ID_Btn_Sub"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintTop_toTopOf="@id/Input_ID_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_ID_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_ID_Btn_Add"
+                        app:layout_constraintRight_toLeftOf="@id/Input_IDY"
+                        android:text="@string/BTN_SUB"
+                        android:onClick="@{()->wifi.DEC(@id/Input_ID,120)}"
+                        style="@style/MainActToggleButton"/>
+
+                <!-- ID Y-->
+                <EditText android:id="@+id/Input_IDY"
+                          android:text="@={wifi.IDY}"
+                          android:inputType="number"
+                          app:layout_constraintHorizontal_weight="3"
+                          app:layout_constraintTop_toBottomOf="@id/Input_Direction_label"
+                          app:layout_constraintBottom_toTopOf="@id/Start"
+                          app:layout_constraintLeft_toRightOf="@id/Input_ID_Btn_Sub"
+                          app:layout_constraintRight_toLeftOf="@id/Input_IDY_Btn_Add"
+                          style="@style/MainActEditText"/>
+                <Button android:id="@+id/Input_IDY_Btn_Add"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintTop_toTopOf="@id/Input_ID_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_ID_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_IDY"
+                        app:layout_constraintRight_toLeftOf="@id/Input_IDY_Btn_Sub"
+                        android:text="@string/BTN_ADD"
+                        android:onClick="@{()->wifi.ADD(@id/Input_IDY,120)}"
+                        style="@style/MainActToggleButton"/>
+                <Button android:id="@+id/Input_IDY_Btn_Sub"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintTop_toTopOf="@id/Input_ID_label"
+                        app:layout_constraintBottom_toBottomOf="@id/Input_ID_label"
+                        app:layout_constraintLeft_toRightOf="@id/Input_IDY_Btn_Add"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="@string/BTN_SUB"
+                        android:onClick="@{()->wifi.DEC(@id/Input_IDY,120)}"
+                        style="@style/MainActToggleButton"/>
+
+                <!-- bottom button -->
+                <ToggleButton android:id="@+id/Start"
+                              android:textOn="@string/WIFI_OFF"
+                              android:textOff="@string/WIFI_ON"
+                              android:onCheckedChanged="@{wifi::SwitchWifiState}"
+                              app:layout_constraintHorizontal_weight="6"
+                              app:layout_constraintVertical_weight="1"
+                              app:layout_constraintTop_toBottomOf="@id/Input_ID_label"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              app:layout_constraintLeft_toLeftOf="parent"
+                              app:layout_constraintRight_toLeftOf="@id/Send"
+                              style="@style/MainActToggleButton"/>
+                <Button android:id="@+id/Send"
+                        android:onClick="@{wifi::SendPackage}"
+                        android:text="@string/DATA_Send"
+                        app:layout_constraintHorizontal_weight="6"
+                        app:layout_constraintTop_toTopOf="@id/Start"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/Start"
+                        app:layout_constraintRight_toRightOf="parent"
+                        style="@style/MainActToggleButton"/>
+
+            </android.support.constraint.ConstraintLayout>
+        </GridLayout>
+    </ScrollView>
+
+</layout>

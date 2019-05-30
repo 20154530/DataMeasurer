@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wifilistitem_height"
+            android:background="@color/colorTransparent"
+            android:columnCount="3">
+    <TextView android:id="@+id/wifi_name"
+              android:layout_row="1"
+              android:layout_column="0"
+              android:layout_columnWeight="1"
+              style="@style/Wifilistitem_textview"/>
+    <TextView android:id="@+id/wifi_mac"
+              android:layout_row="1"
+              android:layout_column="1"
+              android:layout_columnWeight="2"
+              android:background="@drawable/part_seperator"
+              style="@style/Wifilistitem_textview"/>
+    <TextView android:id="@+id/wifi_level"
+              android:layout_row="1"
+              android:layout_column="2"
+              android:layout_columnWeight="1"
+              style="@style/Wifilistitem_textview"/>
+</GridLayout>

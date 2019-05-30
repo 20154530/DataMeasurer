@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">DataMeasurer</string>
+    <string name="WIFI_NUM">Num</string>
+    <string name="WIFI_NOW">Selected</string>
+    <string name="WIFI_ON">StartScan</string>
+    <string name="WIFI_OFF">StopScan</string>
+
+    <string name="DATA_Send">SendData</string>
+
+    <string name="PKG_ID">序号(x,y)</string>
+    <string name="PKG_SUBID">子序号(0-1)</string>
+    <string name="PKG_LAYER">楼层(0-2)</string>
+    <string name="PKG_DIRECTION">方向号(0-3)</string>
+
+    <string name="BTN_ADD">+</string>
+    <string name="BTN_SUB">-</string>
+
+    <string name="FORMAT_IP">0123456789.</string>
+
+    <string name="TCP_IP">IP</string>
+    <string name="TCP_Port">Port</string>
+</resources>

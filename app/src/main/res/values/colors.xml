@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorMainTheme">#007acc</color>
+    <color name="colorMainTheme_D1">#80007acc</color>
+    <color name="colorMainTheme_D2">#60007acc</color>
+    <color name="colorPrimary">#242424</color>
+    <color name="colorPrimaryDark">#1E1E1E</color>
+    <color name="colorListBG">#1c1c1c</color>
+    <color name="colorAccent">#eeeeee</color>
+    <color name="colorAccent_T0">#80ffffff</color>
+</resources>
